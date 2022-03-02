@@ -17,6 +17,7 @@
                 <img src="./assets/bin.svg" class="delete" data-id="${task.id}"/>
                 `;
             taskList.append(ul);
+
         }
 
 
@@ -99,29 +100,35 @@
         function handleInputKeyPress(event) {
             if (event.key == 'Enter') {
                 const text = event.target.value;
-                // console.log(text);
-
-                // if nothing entered
-                if (!text) {
-                    alert("Task cannot be empty");
-                    return;
-                }
-
-                const task = {
-                    text: text,
-                    id: Date.now().toString(),
-                    completed: false
-                }
-                console.log(task);
+                fillingData(text);
                 event.target.value = '';
-                addTask(task);
+
             }
         }
 
+        //6.1 handling data
+        function fillingData(text) {
+            // console.log(text);
+
+            // if nothing entered
+            if (!text) {
+                alert("Task cannot be empty");
+                return;
+            }
+
+            const task = {
+                text: text,
+                id: Date.now().toString(),
+                completed: false
+            }
+            console.log(task);
+            addTask(task);
+
+        }
         // 7. handle clicks
         function handleClickListener(event) {
             const target = event.target;
-            // console.log(target);
+            console.log(target);
 
             if (target.className == 'delete') {
                 const taskId = target.dataset.id;
@@ -157,6 +164,10 @@
                 renderList();
                 taskArray = originalArray;
                 return;
+            } else if (target.id == 'submit-btn') {
+                const text = addTaskInput.value;
+                fillingData(text);
+                addTaskInput.value = '';
             }
 
         }
@@ -166,7 +177,7 @@
             addTaskInput.addEventListener('keyup', handleInputKeyPress);
             document.addEventListener('click', handleClickListener);
         }
-        
+
 
         return {
             initialize: initializeApp()
