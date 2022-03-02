@@ -12,27 +12,14 @@
             const ul = document.createElement('ul');
 
             ul.innerHTML = `
-            
-            <label class="round">
-                <input type="checkbox" id="${task.id}"  ${task.completed ? 'checked':''} class="check-btn">
-                <span for="${task.id}"class="round-checkmark"></span>
-            </label>
-            <label for="${task.id}"  id="task-text">${task.text}</label>
+            <input type="checkbox" id="${task.id}"  ${task.completed ? 'checked':''} class="check-btn"/>
+            <label for="${task.id}" id="task-text" class="checkbox">${task.text}</label>
                 <img src="./assets/bin.svg" class="delete" data-id="${task.id}"/>
                 `;
             taskList.append(ul);
-            if(task.completed)
-                document.getElementById("task-text").classList.add("line-through");
         }
 
 
-function test(task){
-    var test = document.getElementsByClassName("line-through");
-    console.log(task.completed)
-    if(task.completed){
-        test.setAttribute('id','testing');
-    }
-}
         // 2. RenderList
         function renderList() {
             taskList.innerHTML = '';
@@ -179,13 +166,9 @@ function test(task){
             addTaskInput.addEventListener('keyup', handleInputKeyPress);
             document.addEventListener('click', handleClickListener);
         }
-        // initializeApp();
+        
 
         return {
             initialize: initializeApp()
         }
     })();
-
-    // var TODOListApp = (function () {
-    //     return {}
-    // })();

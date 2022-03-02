@@ -28,7 +28,8 @@ body {
     border-radius: 20px;
     box-shadow: 0px 0px 7px 2px lightgrey;
     background: #fff5ee;
-    box-shadow: -4px 3px 0px 0px lightgrey;;
+    box-shadow: -4px 3px 0px 0px lightgrey;
+    ;
     max-height: 80%;
     margin-top: 30px;
     min-width: 350px;
@@ -59,9 +60,10 @@ body {
     padding: 12px 20px 12px 50px;
 }
 
-#input-section input:hover{
+#input-section input:hover {
     box-shadow: 1px 1px gray;
 }
+
 #input-section #list-icon {
     font-size: 70px;
     color: #004e92;
@@ -108,9 +110,10 @@ body {
     display: none;
 }
 
-.round input:checked+label{
+ul input:checked+label {
     text-decoration: line-through;
 }
+
 
 ul {
     display: flex;
@@ -119,6 +122,16 @@ ul {
     padding: 10px 0px;
 }
 
+ul label .icon {
+    display: block;
+
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
 
 .check-btn {
     display: block;
@@ -143,66 +156,4 @@ ul {
 
 .delete:hover {
     cursor: pointer;
-}
-
-.round {
-    position: relative;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.round input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-
-.round-checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background: rgba(194, 192, 192, 0.747);
-    border-radius: 50%;
-}
-
-  .line-through{
-    text-decoration: line-through;
-    text-decoration-color: hsl(0, 100%, 50%);
-  }
-
-.round:hover input~.round-checkmark {
-    background-color: rgb(236, 219, 219);
-}
-
-.round input:checked~.round-checkmark {
-    background-color: #5b51ec;
-}
-
-.round-checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-.round input:checked~.round-checkmark:after {
-    display: block;
-}
-
-.round .round-checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
 }
