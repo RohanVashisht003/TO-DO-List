@@ -5,7 +5,6 @@
         const counter = document.getElementById('task-counter');
 
         console.log('working');
-        // console.log(taskArray);
 
         // 1. add task to dom
         function addTaskDOM(task) {
@@ -16,6 +15,7 @@
             <label for="${task.id}" id="task-text" class="checkbox">${task.text}</label>
                 <img src="./assets/bin.svg" class="delete" data-id="${task.id}"/>
                 `;
+            // appending the task to list
             taskList.append(ul);
 
         }
@@ -28,10 +28,11 @@
             for (let i = 0; i < taskArray.length; i++) {
                 addTaskDOM(taskArray[i]);
             }
+            // increasing counter
             counter.innerHTML = taskArray.length;
         }
 
-        // 3 mark Complete Task
+        // 3 mark individual task complete 
         function markTaskComplete(taskId) {
             const task = taskArray.filter(function (task) {
                 return task.id == taskId;
@@ -47,7 +48,7 @@
             alert('Could not toggle the task');
         }
 
-        // 3.1 mark all complete
+        // 3.1 mark all tasks complete
         function markAllComplete() {
             const task = taskArray;
             if (task.length > 0) {
@@ -60,7 +61,7 @@
             }
         }
 
-        // 4. delete task
+        // 4. delete individual task
         function deleteTask(taskId) {
             const newTasks = taskArray.filter(function (task) {
                 return task.id !== taskId;
@@ -70,7 +71,7 @@
             renderList();
         }
 
-        // 4.1 delete completed task
+        // 4.1 delete all completed task
         function deleteAllTask() {
             const task = [];
             if (taskArray.length > 0) {
@@ -91,7 +92,6 @@
             if (task) {
                 taskArray.push(task);
                 renderList();
-                // alert('Task added successfully');
                 return;
             }
         }
@@ -108,7 +108,6 @@
 
         //6.1 handling data
         function fillingData(text) {
-            // console.log(text);
 
             // if nothing entered
             if (!text) {
@@ -116,6 +115,7 @@
                 return;
             }
 
+            // task object
             const task = {
                 text: text,
                 id: Date.now().toString(),
@@ -130,23 +130,33 @@
             const target = event.target;
             console.log(target);
 
+            // for deleting single task
             if (target.className == 'delete') {
                 const taskId = target.dataset.id;
                 deleteTask(taskId);
                 return;
 
+                // for marking task complete
             } else if (target.className == 'check-btn') {
                 const taskId = target.id;
                 markTaskComplete(taskId);
                 return;
-            } else if (target.id == 'complete-all') {
+            }
+            // for marking all tasks complete 
+            else if (target.id == 'complete-all') {
                 markAllComplete();
                 return;
-            } else if (target.id == 'clear-completed') {
+            }
+            // for deleting all completed tasks 
+            else if (target.id == 'clear-completed') {
                 deleteAllTask();
-            } else if (target.id == 'all') {
+            }
+            // for filtering all tasks 
+            else if (target.id == 'all') {
                 renderList();
-            } else if (target.id == 'uncomplete') {
+            } 
+            // for filtering uncompleted tasks
+            else if (target.id == 'uncomplete') {
                 const originalArray = taskArray;
                 const tasks = taskArray.filter((task) => {
                     return task.completed == false;
@@ -155,7 +165,9 @@
                 renderList();
                 taskArray = originalArray;
                 return;
-            } else if (target.id == 'completed') {
+            } 
+            // for filtering completed tasks
+            else if (target.id == 'completed') {
                 const originalArray = taskArray;
                 const tasks = taskArray.filter((task) => {
                     return task.completed == true;
@@ -164,7 +176,9 @@
                 renderList();
                 taskArray = originalArray;
                 return;
-            } else if (target.id == 'submit-btn') {
+            } 
+            // handling add task button
+            else if (target.id == 'submit-btn') {
                 const text = addTaskInput.value;
                 fillingData(text);
                 addTaskInput.value = '';
