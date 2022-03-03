@@ -4,7 +4,7 @@
 }
 
 body {
-    background: #337def;
+    background:#565a5f;
     background-repeat: no-repeat;
     height: 100vh;
     display: flex;
@@ -163,7 +163,7 @@ ul {
 
 ul:hover{
  box-shadow: 1px 1px 1px rgb(145, 140, 140);
- transform: scale(1.06);
+ transform: scale(1.04);
 }
 
 
