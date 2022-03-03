@@ -71,7 +71,7 @@
             renderList();
         }
 
-        // 4.1 delete all completed task
+        // 4.1 delete all completed tasks
         function deleteAllTask() {
             const task = [];
             if (taskArray.length > 0) {
